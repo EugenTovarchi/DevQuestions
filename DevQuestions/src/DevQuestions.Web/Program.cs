@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 
 namespace DevQuestions.Web;
 
@@ -8,13 +8,10 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-
-        builder.Services.AddControllers();
         builder.Services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevQuestions", Version = "v1" });
         });
-
 
         var app = builder.Build();
 
