@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevQuestions.Web.Controllers;
 
+/// <summary>
+/// API 
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class QuestionsController : ControllerBase

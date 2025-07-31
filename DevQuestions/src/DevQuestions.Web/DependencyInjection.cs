@@ -1,6 +1,5 @@
 ﻿using DevQuestions.Application;
-using DevQuestions.Application.Questions;
-using FluentValidation;
+using DevQuestions.Infrastructure.Postgres;
 
 namespace DevQuestions.Web;
 
@@ -11,12 +10,12 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddProgramDependencies(this IServiceCollection services) =>
         services.AddWebDependencies()
-                .AddAppApplication();
+                .AddAppApplication()
+                .AddPostgresInfrastructure();
 
     private static IServiceCollection AddWebDependencies(this IServiceCollection services)
     {
         services.AddControllers();
-
         return services;
     }
 

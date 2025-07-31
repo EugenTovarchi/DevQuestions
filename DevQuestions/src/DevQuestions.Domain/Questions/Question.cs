@@ -27,12 +27,12 @@ public class Question
 
     public Guid UserId { get; set; }
 
-    public List<Answer> Answers { get; set; } = []; //список ответов к вопросу
+    public List<Answer> Answers { get; set; } = []; 
 
     public Answer?  Solution { get; set; }   //указываем прямую ссылку т.к. обе сущности в одном модуле
 
     public List<Guid> Tags { get; set; }  //указываем через Guid т.к проект будет разростаться (иначе бы делали прямую ссылку List<Tag> Tags
 
-    public QuestionStatus status { get; set; } = QuestionStatus.Open;
+    public QuestionStatus Status { get; set; } = QuestionStatus.Open;
 }
 
