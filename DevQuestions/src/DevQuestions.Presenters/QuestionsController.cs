@@ -1,5 +1,8 @@
-﻿using DevQuestions.Application.Questions;
+﻿using DevQuestions.Application.Abstractions;
+using DevQuestions.Application.Questions;
+using DevQuestions.Application.Questions.CreateQuestion;
 using DevQuestions.Contracts.Questions;
+using DevQuestions.Web.ResponseExtensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevQuestions.Web.Controllers;
@@ -16,13 +19,16 @@ public class QuestionsController : ControllerBase
     {
         _questionsService = questionsService;
     }
+
     [HttpPost]
     public async Task<IActionResult> Create(
-        [FromBody] CreatedQuestionDto questionDto,
+        [FromServices] ICommandHandler<Guid, CreateQuestionCommand> handler,
+        [FromBody] CreatedQuestionDto request,
         CancellationToken cancellationToken)
     {
-        var questionId = await _questionsService.Create(questionDto, cancellationToken);
-        return Ok(questionId);
+        var command = new CreateQuestionCommand(request); //кладем инфо из запроса в наш комманд
+        var result = await handler.Handle(command, cancellationToken);
+        return result.IsFailure ?  result.Error.ToResponse() : Ok(result.Value);
     }
 
     [HttpGet]
