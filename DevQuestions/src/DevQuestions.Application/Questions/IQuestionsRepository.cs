@@ -1,4 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
+using DevQuestions.Application.Questions.GetQuestionsQuery;
 using DevQuestions.Questions;
 using DevQuestions.Shared;
 
@@ -13,6 +14,9 @@ public interface IQuestionsRepository
     Task<Guid> DeleteAsync (Guid questionId, CancellationToken cancellationToken);
 
     Task<Result<Question,Failure>> GetByIdAsync(Guid questionId, CancellationToken cancellationToken);
+
+    Task<(IReadOnlyList<Question> questions, long Count)>  GetQuestionsWithFiltersAsync
+        (GetQuestionsWithFilterCommand command, CancellationToken cancellationToken);
 
     Task<int> GeOpenUserQuestionsAsync (Guid userId, CancellationToken cancellationToken); // зарпашиваем вопросы юзера с статусом: Open
     Task<Guid> SaveAsync(Question question, CancellationToken cancellationToken);

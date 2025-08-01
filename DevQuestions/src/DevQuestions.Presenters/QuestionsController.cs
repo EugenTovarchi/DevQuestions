@@ -33,7 +33,7 @@ public class QuestionsController : ControllerBase
 
     [HttpGet]
     public async Task<IActionResult> Get(
-        [FromQuery] GetQuestionsDto questionsDto,
+        [FromQuery] QuestionsDto questionsDto,
         CancellationToken cancellationToken)
     {
         return Ok("Get Quest");
