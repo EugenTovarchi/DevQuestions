@@ -27,6 +27,13 @@ public static class DependencyInjection
              .AsSelf()
              .WithScopedLifetime());
 
+        services.Scan(scan => scan
+             .FromAssemblies(assembly)
+             .AddClasses(classes => classes
+                 .AssignableTo(typeof(IQueryHandler<,>)))
+             .AsSelf()
+             .WithScopedLifetime());
+
         return services;
     }
 }

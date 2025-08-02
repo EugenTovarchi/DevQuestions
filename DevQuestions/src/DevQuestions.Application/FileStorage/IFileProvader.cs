@@ -5,7 +5,7 @@ public interface IFileProvader
     //Task<string> UploadAsync(Stream stream, string key, string bucket);
 
     /// <summary>
-    /// Этот метод для получения единожды URL
+    /// Этот метод для получения единственного URL
     /// </summary>
     /// <param name="fileId"></param>
     /// <param name="cancellationToken"></param>
@@ -15,7 +15,7 @@ public interface IFileProvader
     /// <summary>
     /// Метод для обворачивания свойства ScreenshotId в Dictionary [key:guid, value: url ]
     /// </summary>
-    /// <param name="fileIds">Получаем список Guid</param>
+    /// <param name="fileIds">Принимаем список Guid</param>
     /// <param name="cancellationToken"></param>
     /// <returns>Получаем Dictionary </returns>
     public Task <Dictionary<Guid, string>> GetUrlByIdAsync (IEnumerable<Guid> fileIds, CancellationToken cancellationToken = default);

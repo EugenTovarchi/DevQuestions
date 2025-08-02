@@ -3,5 +3,5 @@ using DevQuestions.Contracts.Questions;
 
 namespace DevQuestions.Application.Questions.GetQuestionsQuery;
 
-public record GetQuestionsWithFilterCommand(QuestionDto Dto) : ICommand;
+public record GetQuestionsWithFilterQuery(QuestionDto Dto) : IQuery;
 

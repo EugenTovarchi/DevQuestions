@@ -53,7 +53,7 @@ public class QuestionsEFCoreRepository : IQuestionsRepository
     }
 
     public Task<(IReadOnlyList<Question> questions, long Count)> GetQuestionsWithFiltersAsync(
-        GetQuestionsWithFilterCommand command, CancellationToken cancellationToken) 
+        GetQuestionsWithFilterQuery query, CancellationToken cancellationToken) 
         => throw new NotImplementedException();
 
     public async Task<Guid> SaveAsync(Question question, CancellationToken cancellationToken)

@@ -15,8 +15,8 @@ public interface IQuestionsRepository
 
     Task<Result<Question,Failure>> GetByIdAsync(Guid questionId, CancellationToken cancellationToken);
 
-    Task<(IReadOnlyList<Question> questions, long Count)>  GetQuestionsWithFiltersAsync
-        (GetQuestionsWithFilterCommand command, CancellationToken cancellationToken);
+    //Task<(IReadOnlyList<Question> questions, long Count)>  GetQuestionsWithFiltersAsync
+    //    (GetQuestionsWithFilterCommand command, CancellationToken cancellationToken);
 
     Task<int> GeOpenUserQuestionsAsync (Guid userId, CancellationToken cancellationToken); // зарпашиваем вопросы юзера с статусом: Open
     Task<Guid> SaveAsync(Question question, CancellationToken cancellationToken);
