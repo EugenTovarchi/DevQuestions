@@ -13,3 +13,14 @@ public enum QuestionStatus
     Resolved
 }
 
+public static class QustionStatusExtension
+{
+    public static string ToRussianString(this QuestionStatus status) =>
+        status switch
+        {
+            QuestionStatus.Open => "Открыт",
+            QuestionStatus.Resolved => "Решен",
+            _=>throw new ArgumentOutOfRangeException(nameof(status)),   
+        };
+}
+

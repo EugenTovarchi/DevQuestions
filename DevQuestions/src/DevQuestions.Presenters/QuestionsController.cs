@@ -1,9 +1,16 @@
-﻿using DevQuestions.Application.Questions;
+﻿using DevQuestions.Application.Abstractions;
+using DevQuestions.Application.Questions;
+using DevQuestions.Application.Questions.CreateQuestion;
+using DevQuestions.Application.Questions.GetQuestionsQuery;
 using DevQuestions.Contracts.Questions;
+using DevQuestions.Web.ResponseExtensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevQuestions.Web.Controllers;
 
+/// <summary>
+/// API 
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class QuestionsController : ControllerBase
@@ -13,21 +20,28 @@ public class QuestionsController : ControllerBase
     {
         _questionsService = questionsService;
     }
+
     [HttpPost]
     public async Task<IActionResult> Create(
-        [FromBody] CreatedQuestionDto questionDto,
+        [FromServices] ICommandHandler<Guid, CreateQuestionCommand> handler,
+        [FromBody] CreatedQuestionDto request,
         CancellationToken cancellationToken)
     {
-        var questionId = await _questionsService.Create(questionDto, cancellationToken);
-        return Ok(questionId);
+        var command = new CreateQuestionCommand(request); //кладем инфо из запроса в наш комманд
+        var result = await handler.Handle(command, cancellationToken);
+        return result.IsFailure ?  result.Error.ToResponse() : Ok(result.Value);
     }
 
     [HttpGet]
     public async Task<IActionResult> Get(
-        [FromQuery] GetQuestionsDto questionsDto,
+        [FromServices] IQueryHandler<QuestionResponse, GetQuestionsWithFilterQuery> query,
+        [FromQuery] QuestionDto request,
         CancellationToken cancellationToken)
     {
-        return Ok("Get Quest");
+        var command = new GetQuestionsWithFilterQuery(request);
+            
+        var questions = await query.Handle(command, cancellationToken);
+        return Ok(questions);
     }
 
     [HttpGet("{questionId:guid}")]

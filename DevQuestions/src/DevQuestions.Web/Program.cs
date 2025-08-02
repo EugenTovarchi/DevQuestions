@@ -13,7 +13,11 @@ public class Program
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevQuestions", Version = "v1" });
         });
 
+        builder.Services.AddProgramDependencies();
+
         var app = builder.Build();
+
+        //app.UseExceptionMiddleware();
 
         if (app.Environment.IsDevelopment())
         {
