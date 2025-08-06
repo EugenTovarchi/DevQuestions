@@ -68,7 +68,7 @@ public class QuestionsService : IQuestionsService
             questionDto.TagIds
         );
 
-        await _questionsRepository.AddAsync(question, cancellationToken);
+        await _questionsRepository.AddQuestionAsync(question, cancellationToken);
 
         _logger.LogInformation("Created question was with {questionId}", questionId);
 

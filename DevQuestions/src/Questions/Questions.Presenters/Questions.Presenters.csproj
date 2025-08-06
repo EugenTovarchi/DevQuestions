@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DevQuestions.Shared\Shared.csproj" />
+    <ProjectReference Include="..\..\Core\Framework\Framework.csproj" />
     <ProjectReference Include="..\Questions.Application\Questions.Application.csproj" />
     <ProjectReference Include="..\Questions.Contracts\Questions.Contracts.csproj" />
     <ProjectReference Include="..\Questions.Infrastructure.Postgres\Questions.Infrastructure.Postgres.csproj" />

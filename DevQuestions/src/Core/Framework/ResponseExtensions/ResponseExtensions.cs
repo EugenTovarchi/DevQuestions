@@ -31,7 +31,7 @@ public static class ResponseExtensions
 
         int statusCode = distinctErrorTypes.Count > 1
             ? StatusCodes.Status500InternalServerError
-            : GetStatusCodeFromErrorType( (ErrorType)distinctErrorTypes.First());
+            : GetStatusCodeFromErrorType((ErrorType)distinctErrorTypes.First());
 
         return new ObjectResult(failure)
         {

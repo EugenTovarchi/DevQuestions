@@ -6,7 +6,7 @@ namespace Questions.Application;
 
 public interface IQuestionsRepository
 {
-    Task<Guid> AddAsync(Question question, CancellationToken cancellationToken);
+    Task<Guid> AddQuestionAsync(Question question, CancellationToken cancellationToken);
     Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken);
     Task<Guid> UpdateAsync (Question question, CancellationToken cancellationToken);
 

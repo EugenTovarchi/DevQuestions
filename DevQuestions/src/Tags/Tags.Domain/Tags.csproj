@@ -10,6 +10,7 @@
     <Folder Include="Database\" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
     <ProjectReference Include="..\..\Core\DevQuestions.Shared\Shared.csproj" />
     <ProjectReference Include="..\..\Core\Framework\Framework.csproj" />
     <ProjectReference Include="..\Tags.Contracts\Tags.Contracts.csproj" />

@@ -16,25 +16,52 @@ public class QuestionsEFCoreRepository : IQuestionsRepository
         _dbContext = dbContext;
     }
 
-    public Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public async Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken)
+    {
+        var question = await _dbContext.Questions
+            .Include(q => q.Answers) 
+            .FirstOrDefaultAsync(q => q.Id == answer.QuestionId, cancellationToken);
 
-    //public async Task<Guid> AddAnswerAsync(Answer answer, CancellationToken cancellationToken)
-    //{
-    //    await _dbContext.Questions.AddAsync(answer, cancellationToken);
-    //    await _dbContext.SaveChangesAsync();
-    //    return answer.Id;
-    //}
+        if (question is null)
+        {
+           Errors.General.NotFound(answer.QuestionId);
+        }
 
-    public async Task<Guid> AddAsync(Question question, CancellationToken cancellationToken)
+        question!.Answers.Add(answer);
+
+        await _dbContext.SaveChangesAsync(cancellationToken);
+
+        return answer.Id;
+    }
+
+    public async Task<Guid> AddQuestionAsync(Question question, CancellationToken cancellationToken)
     {
         await _dbContext.Questions.AddAsync(question, cancellationToken);  
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
         return question.Id;
     }
 
-    public Task<Guid> DeleteAsync(Guid questionId, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public async Task<Guid> DeleteAsync(Guid questionId, CancellationToken cancellationToken)
+    {
+        var question = await _dbContext.Questions
+        .FirstOrDefaultAsync(q => q.Id == questionId, cancellationToken);
 
-    public Task<int> GeOpenUserQuestionsAsync(Guid userId, CancellationToken cancellationToken) => throw new NotImplementedException();
+        if (question is null)
+        {
+            Errors.Questions.NotFoundQuestion(questionId);
+        }
+
+        _dbContext.Questions.Remove(question!);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return questionId;
+    }
+
+    public async Task<int> GeOpenUserQuestionsAsync(Guid userId, CancellationToken cancellationToken)
+    {
+        return await _dbContext.Questions
+        .CountAsync(q => q.UserId == userId && q.Status == QuestionStatus.Open,
+            cancellationToken);
+    }
 
     public async Task<Result<Question,Failure>> GetByIdAsync(Guid questionId, CancellationToken cancellationToken)
     {
@@ -52,16 +79,32 @@ public class QuestionsEFCoreRepository : IQuestionsRepository
         return question;
     }
 
-    public Task<(IReadOnlyList<Question> questions, long Count)> GetQuestionsWithFiltersAsync(
-        GetQuestionsWithFilterQuery query, CancellationToken cancellationToken) 
-        => throw new NotImplementedException();
+    public async Task<(IReadOnlyList<Question> questions, long Count)> GetQuestionsWithFiltersAsync(
+        GetQuestionsWithFilterQuery query, CancellationToken cancellationToken)
+    {
+        var queryable = _dbContext.Questions
+        .Include(q => q.Answers)
+        .Include(q => q.Solution)
+        .AsQueryable();
+
+        var totalCount = await queryable.LongCountAsync(cancellationToken);
+
+        var questions = await queryable.ToListAsync(cancellationToken);
+
+        return (questions, totalCount);
+    }
 
     public async Task<Guid> SaveAsync(Question question, CancellationToken cancellationToken)
     {
          _dbContext.Questions.Attach(question);  
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
         return question.Id;
     }
-    public Task<Guid> UpdateAsync(Question question, CancellationToken cancellationToken) => throw new NotImplementedException();
+    public async Task<Guid> UpdateAsync(Question question, CancellationToken cancellationToken)
+    {
+        _dbContext.Questions.Update(question);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return question.Id;
+    }
 }

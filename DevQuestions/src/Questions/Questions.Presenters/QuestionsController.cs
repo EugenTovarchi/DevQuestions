@@ -5,7 +5,6 @@ using Questions.Application.CreateQuestionCommand;
 using Questions.Application.GetQuestionsQuery;
 using Questions.Contracts;
 using Questions.Contracts.Responses;
-using Questions.Presenters.ResponseExtensions;
 using Shared.Abstractions;
 
 namespace Questions.Presenters;

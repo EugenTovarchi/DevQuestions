@@ -31,7 +31,7 @@ public class GetQuestionsWithFiltersHandler : IQueryHandler<QuestionResponse,Get
         //var questions и кол-во (фильтр)  = достаем из репо. В репо метод также принимает наш command
         var questions = await _questionsReadDbContext.ReadQuestions.Include(q => q.Id).ToListAsync(cancellationToken);
 
-        long count = await _questionsReadDbContext.ReadQuestions.LongCountAsync(cancellationToken); //типо все получаем что есть ?
+        long count = await _questionsReadDbContext.ReadQuestions.LongCountAsync(cancellationToken); 
 
         //получаем список id скриншотов, из тех что существуют
         var screenshotIds = questions

@@ -12,4 +12,8 @@
     <PackageReference Include="Scrutor" Version="6.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Questions\Questions.Domain\Questions.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

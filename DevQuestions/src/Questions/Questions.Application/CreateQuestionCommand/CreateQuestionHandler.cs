@@ -53,7 +53,7 @@ public  class CreateQuestionHandler : ICommandHandler<Guid,CreateQuestionCommand
             command.QuestionDto.TagIds
         );
 
-        await _questionsRepository.AddAsync(question, cancellationToken);
+        await _questionsRepository.AddQuestionAsync(question, cancellationToken);
 
         _logger.LogInformation("Created question was with {questionId}", questionId);
 

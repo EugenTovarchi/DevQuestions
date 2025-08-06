@@ -11,6 +11,9 @@ public static class DependencyInjection
         services.AddAppApplication();
         services.AddPostgresInfrastructure();
 
+        services.AddScoped<IQuestionsReadDbContext, QuestionsDbContext>();
+
+
         return services;
     }
 }

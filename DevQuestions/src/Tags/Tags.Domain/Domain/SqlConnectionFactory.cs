@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
+using Shared.Database;
 using System.Data;
 
 namespace Tags.Infrastructure.Postgres;
