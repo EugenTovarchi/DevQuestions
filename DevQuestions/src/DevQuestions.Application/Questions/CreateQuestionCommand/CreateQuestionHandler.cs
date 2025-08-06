@@ -8,7 +8,7 @@ using DevQuestions.Shared;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 
-namespace DevQuestions.Application.Questions.CreateQuestion;
+namespace DevQuestions.Application.Questions.CreateQuestionCommand;
 
 public  class CreateQuestionHandler : ICommandHandler<Guid,CreateQuestionCommand>
 {

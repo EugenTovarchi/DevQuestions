@@ -1,4 +1,4 @@
-﻿namespace DevQuestions.Questions;
+﻿namespace DevQuestions.Domain.Questions;
 
 public class Answer
 {

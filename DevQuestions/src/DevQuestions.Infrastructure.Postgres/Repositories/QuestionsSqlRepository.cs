@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using DevQuestions.Application.Database;
 using DevQuestions.Application.Questions;
-using DevQuestions.Questions;
+using DevQuestions.Domain.Questions;
 
 namespace DevQuestions.Infrastructure.Postgres.Repositories;
 

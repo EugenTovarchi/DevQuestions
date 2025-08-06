@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevQuestions.Web.ResponseExtensions;
+namespace DevQuestions.Presenters.ResponseExtensions;
 
 public static class ResponseExtesions
 {

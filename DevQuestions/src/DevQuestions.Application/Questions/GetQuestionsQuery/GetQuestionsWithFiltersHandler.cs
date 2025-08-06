@@ -1,12 +1,12 @@
 ﻿using CSharpFunctionalExtensions;
 using DevQuestions.Application.Abstractions;
 using DevQuestions.Application.FileStorage;
-using DevQuestions.Application.Questions.GetQuestionsQuery;
 using DevQuestions.Contracts.Questions;
-using DevQuestions.Questions;
+using DevQuestions.Contracts.Responses;
+using DevQuestions.Domain.Questions;
 using Microsoft.EntityFrameworkCore;
 
-namespace DevQuestions.Application.Questions.GetQuestions;
+namespace DevQuestions.Application.Questions.GetQuestionsQuery;
 
 public class GetQuestionsWithFiltersHandler : IQueryHandler<QuestionResponse,GetQuestionsWithFilterQuery>
 {

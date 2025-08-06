@@ -1,4 +1,4 @@
-﻿using DevQuestions.Questions;
+﻿using DevQuestions.Domain.Questions;
 
 namespace DevQuestions.Application.Abstractions;
 

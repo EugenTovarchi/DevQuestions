@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using DevQuestions.Shared;
 
-namespace DevQuestions.Web.Middlewares;
+namespace Web.Middlewares;
 
 public class ExceptionMiddleware
 {
