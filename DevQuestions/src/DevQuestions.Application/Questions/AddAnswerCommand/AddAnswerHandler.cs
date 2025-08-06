@@ -9,7 +9,7 @@ using DevQuestions.Shared;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 
-namespace DevQuestions.Application.Questions.AddAnswer;
+namespace DevQuestions.Application.Questions.AddAnswerCommand;
 
 public  class AddAnswerHandler : ICommandHandler<Guid ,AddAnswerCommand>
 {

@@ -1,10 +1,10 @@
 ﻿using DevQuestions.Application;
 using DevQuestions.Infrastructure.Postgres;
 
-namespace DevQuestions.Web;
+namespace Web;
 
 /// <summary>
-/// Настройка DI контейнера
+/// Настройка DI контейнера.
 /// </summary>
 public static class DependencyInjection
 {

@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 using DevQuestions.Application.Questions.GetQuestionsQuery;
-using DevQuestions.Questions;
+using DevQuestions.Domain.Questions;
 using DevQuestions.Shared;
 
 namespace DevQuestions.Application.Questions;

@@ -1,12 +1,13 @@
 ﻿using DevQuestions.Application.Abstractions;
 using DevQuestions.Application.Questions;
-using DevQuestions.Application.Questions.CreateQuestion;
+using DevQuestions.Application.Questions.CreateQuestionCommand;
 using DevQuestions.Application.Questions.GetQuestionsQuery;
 using DevQuestions.Contracts.Questions;
+using DevQuestions.Contracts.Responses;
 using DevQuestions.Web.ResponseExtensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DevQuestions.Web.Controllers;
+namespace DevQuestions.Presenters;
 
 /// <summary>
 /// API 

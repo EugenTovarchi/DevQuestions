@@ -1,6 +1,6 @@
 ﻿using DevQuestions.Contracts.Questions;
 
-namespace DevQuestions.Application.Questions.GetQuestionsQuery;
+namespace DevQuestions.Contracts.Responses;
 
 public class QuestionResponse(IEnumerable<QuestionDto> Questions, long TotalCount);
 

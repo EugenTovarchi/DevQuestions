@@ -1,5 +1,5 @@
 ﻿using DevQuestions.Application.Abstractions;
-using DevQuestions.Questions;
+using DevQuestions.Domain.Questions;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevQuestions.Infrastructure.Postgres;

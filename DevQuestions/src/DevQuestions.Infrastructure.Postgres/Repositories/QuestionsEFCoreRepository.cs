@@ -2,7 +2,7 @@
 using DevQuestions.Application.Exceptions;
 using DevQuestions.Application.Questions;
 using DevQuestions.Application.Questions.GetQuestionsQuery;
-using DevQuestions.Questions;
+using DevQuestions.Domain.Questions;
 using DevQuestions.Shared;
 using Microsoft.EntityFrameworkCore;
 

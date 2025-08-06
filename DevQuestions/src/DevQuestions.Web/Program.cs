@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace DevQuestions.Web;
+namespace Web;
 
 public class Program
 {
