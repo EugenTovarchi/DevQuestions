@@ -103,6 +103,11 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+/DevQuestions.Web/
+/DevQuestions.Presenters/
+/DevQuestions.Domain/
+/DevQuestions.Contracts/
+/DevQuestions.Application/
 
 # Chutzpah Test files
 _Chutzpah*
